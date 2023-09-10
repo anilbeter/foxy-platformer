@@ -82,5 +82,12 @@ public class PlayerMoveControls : MonoBehaviour
         {
             touchingGround = false;
         }
+        SeeRays(leftCheck);
+    }
+
+    private void SeeRays(RaycastHit2D leftCheckHit)
+    {
+        Color color1 = leftCheckHit ? Color.red : Color.green;
+        Debug.DrawRay(leftPoint.position, Vector2.down * rayLength, color1);
     }
 }
