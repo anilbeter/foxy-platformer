@@ -19,12 +19,26 @@ public class GatherInput : MonoBehaviour
     private void OnEnable()
     {
         myControls.Player.Move.performed += StartMove;
+        myControls.Player.Move.canceled += StopMove;
 
         myControls.Player.Enable();
+    }
+
+    private void OnDisable()
+    {
+        myControls.Player.Move.performed -= StartMove;
+        myControls.Player.Move.canceled -= StopMove;
+
+        myControls.Player.Disable();
     }
 
     private void StartMove(InputAction.CallbackContext ctx)
     {
         valueX = ctx.ReadValue<float>();
+    }
+
+    private void StopMove(InputAction.CallbackContext ctx)
+    {
+        valueX = 0f;
     }
 }
