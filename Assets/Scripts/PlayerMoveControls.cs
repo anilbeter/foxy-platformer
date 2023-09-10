@@ -13,6 +13,11 @@ public class PlayerMoveControls : MonoBehaviour
 
     private int direction = 1;
 
+    public float rayLength;
+    public LayerMask groundLayer;
+    public Transform leftPoint;
+    public bool touchingGround = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -28,6 +33,7 @@ public class PlayerMoveControls : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CheckStatus();
         Move();
         Jump();
     }
@@ -42,7 +48,10 @@ public class PlayerMoveControls : MonoBehaviour
     {
         if (gI.jumpInput)
         {
-            rb.velocity = new(gI.valueX * speed, jumpForce);
+            if (touchingGround)
+            {
+                rb.velocity = new(gI.valueX * speed, jumpForce);
+            }
         }
         gI.jumpInput = false;
     }
@@ -60,5 +69,18 @@ public class PlayerMoveControls : MonoBehaviour
     {
         // I used Mathf.Abs cuz when player moves to the left, rb.velocity.x less than zero (negative). And I setted Move->Idle condition to less than 0.01f. So when player moves to the left, animation will be Idle. I dont want that. To do so I use Mathf.Abs to prevent Idle animation when player moves to the left.
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+    }
+
+    private void CheckStatus()
+    {
+        RaycastHit2D leftCheck = Physics2D.Raycast(leftPoint.position, Vector2.down, rayLength, groundLayer);
+        if (leftCheck)
+        {
+            touchingGround = true;
+        }
+        else
+        {
+            touchingGround = false;
+        }
     }
 }
