@@ -12,6 +12,8 @@ public class PlayerMoveControls : MonoBehaviour
     private Animator anim;
 
     private int direction = 1;
+    public int additionalJumps;
+    private int resetJumpsNumber;
 
     public float rayLength;
     public LayerMask groundLayer;
@@ -24,6 +26,8 @@ public class PlayerMoveControls : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gI = GetComponent<GatherInput>();
         anim = GetComponent<Animator>();
+
+        resetJumpsNumber = additionalJumps;
     }
 
 
@@ -52,6 +56,11 @@ public class PlayerMoveControls : MonoBehaviour
             if (touchingGround)
             {
                 rb.velocity = new(gI.valueX * speed, jumpForce);
+            }
+            else if (additionalJumps > 0)
+            {
+                rb.velocity = new(gI.valueX * speed, jumpForce);
+                additionalJumps--;
             }
         }
         gI.jumpInput = false;
@@ -82,6 +91,7 @@ public class PlayerMoveControls : MonoBehaviour
         if (leftCheck || rightCheck)
         {
             touchingGround = true;
+            additionalJumps = resetJumpsNumber;
         }
         else
         {
