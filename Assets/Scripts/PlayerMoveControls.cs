@@ -70,6 +70,9 @@ public class PlayerMoveControls : MonoBehaviour
     {
         // I used Mathf.Abs cuz when player moves to the left, rb.velocity.x less than zero (negative). And I setted Move->Idle condition to less than 0.01f. So when player moves to the left, animation will be Idle. I dont want that. To do so I use Mathf.Abs to prevent Idle animation when player moves to the left.
         anim.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+
+        anim.SetFloat("verticalSpeed", rb.velocity.y);
+        anim.SetBool("Grounded", touchingGround);
     }
 
     private void CheckStatus()
