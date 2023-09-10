@@ -16,6 +16,7 @@ public class PlayerMoveControls : MonoBehaviour
     public float rayLength;
     public LayerMask groundLayer;
     public Transform leftPoint;
+    public Transform rightPoint;
     public bool touchingGround = true;
 
     void Start()
@@ -74,7 +75,8 @@ public class PlayerMoveControls : MonoBehaviour
     private void CheckStatus()
     {
         RaycastHit2D leftCheck = Physics2D.Raycast(leftPoint.position, Vector2.down, rayLength, groundLayer);
-        if (leftCheck)
+        RaycastHit2D rightCheck = Physics2D.Raycast(rightPoint.position, Vector2.down, rayLength, groundLayer);
+        if (leftCheck || rightCheck)
         {
             touchingGround = true;
         }
@@ -82,12 +84,15 @@ public class PlayerMoveControls : MonoBehaviour
         {
             touchingGround = false;
         }
-        SeeRays(leftCheck);
+        // SeeRays(leftCheck, rightCheck);
     }
 
-    private void SeeRays(RaycastHit2D leftCheckHit)
-    {
-        Color color1 = leftCheckHit ? Color.red : Color.green;
-        Debug.DrawRay(leftPoint.position, Vector2.down * rayLength, color1);
-    }
+    // private void SeeRays(RaycastHit2D leftCheckHit, RaycastHit2D rightCheckHit)
+    // {
+    //     Color color1 = leftCheckHit ? Color.red : Color.green;
+    //     Debug.DrawRay(leftPoint.position, Vector2.down * rayLength, color1);
+
+    //     Color color2 = rightCheckHit ? Color.red : Color.green;
+    //     Debug.DrawRay(rightPoint.position, Vector2.down * rayLength, color2);
+    // }
 }
