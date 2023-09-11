@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour
         if (health <= 0)
         {
             GetComponent<PolygonCollider2D>().enabled = false;
+            GetComponentInParent<GatherInput>().DisableControls();
             Debug.Log("Player is dead :(");
         }
     }
