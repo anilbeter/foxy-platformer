@@ -6,11 +6,13 @@ using UnityEngine.UI;
 
 public class PlayerCollectibles : MonoBehaviour
 {
-    public Text textComponent;
+    private Text textComponent;
     public int gemNumber;
 
     void Start()
     {
+        // With this approach, I don't have to set reference manually, its always find Text component that belongs GemUI
+        textComponent = GameObject.FindGameObjectWithTag("GemUI").GetComponentInChildren<Text>();
         UpdateText();
     }
 
