@@ -2,17 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class PlayerCollectibles : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Text textComponent;
+    public int gemNumber;
+
     void Start()
     {
-        
+        UpdateText();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void UpdateText()
     {
-        
+        textComponent.text = gemNumber.ToString();
+    }
+
+    // public yaptım çünkü bu methodu Gems scriptinde kullanıcam. Amaç-> player gem'e değdiğinde (onTriggerEnter) GemCollected()'ı çağırmak istiyorum
+    public void GemCollected()
+    {
+        gemNumber++;
+        UpdateText();
     }
 }
