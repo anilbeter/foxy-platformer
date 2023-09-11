@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7498610263896459434}
   - component: {fileID: 1561842453259969975}
   - component: {fileID: 6920018787226676914}
-  - component: {fileID: 8443504533144374705}
+  - component: {fileID: 6669066903512980404}
   m_Layer: 10
   m_Name: Spike
   m_TagString: Untagged
@@ -34,7 +34,7 @@ Transform:
   m_Children:
   - {fileID: 5987436939478235350}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7498610263896459434
 SpriteRenderer:
@@ -177,7 +177,7 @@ PolygonCollider2D:
       - {x: 0.375, y: -0.5625}
       - {x: 0.2366395, y: -0.11771798}
   m_UseDelaunayMesh: 0
---- !u!114 &8443504533144374705
+--- !u!114 &6669066903512980404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -190,6 +190,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  forceX: 8
+  forceY: 5
+  duration: 0.15
 --- !u!1 &6295105237808066377
 GameObject:
   m_ObjectHideFlags: 0
