@@ -21,6 +21,8 @@ public class PlayerMoveControls : MonoBehaviour
     public Transform rightPoint;
     public bool touchingGround = true;
 
+    private bool knockBack = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -39,6 +41,9 @@ public class PlayerMoveControls : MonoBehaviour
     private void FixedUpdate()
     {
         CheckStatus();
+        if (knockBack)
+            return;
+        // if knockBack true, then player won't able to move or jump
         Move();
         Jump();
     }
@@ -108,4 +113,33 @@ public class PlayerMoveControls : MonoBehaviour
     //     Color color2 = rightCheckHit ? Color.red : Color.green;
     //     Debug.DrawRay(rightPoint.position, Vector2.down * rayLength, color2);
     // }
+
+    public IEnumerator KnockBack(float forceX, float forceY, float duration, Transform otherObject)
+    {
+        int knockBackDirection;
+        // check if player is to the left of spike (otherObject -> spike)
+        if (transform.position.x < otherObject.position.x)
+            knockBackDirection = -1;
+        // since player is to left of spike, then it should knock back player to the left
+        else
+            knockBackDirection = 1;
+
+        knockBack = true;
+
+        // Reset forces on the player
+        rb.velocity = Vector2.zero;
+
+        Vector2 theForce = new(knockBackDirection * forceX, forceY);
+        // Now add this force to the rigidboy with AddForce function (built-in)
+        rb.AddForce(theForce, ForceMode2D.Impulse);
+
+        // How much second delay should be applied for knocback method execution?
+        yield return new WaitForSeconds(duration);
+
+        // After knocback, the knocback effect should be stopped
+        knockBack = false;
+        // again we should reset forces on the player
+        rb.velocity = Vector2.zero;
+
+    }
 }
