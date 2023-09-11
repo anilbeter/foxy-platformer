@@ -41,7 +41,10 @@ public class GatherInput : MonoBehaviour
 
     private void StartMove(InputAction.CallbackContext ctx)
     {
-        valueX = ctx.ReadValue<float>();
+        // Gamepad sticki kullandığım zaman değerler 0.1, 0,2, ..., 1 e kadar gidiyor (ya da -1e kadar) ve bunun sonucu karakter harekete yavaş başlayıp hızlanıyor. Bunu istemediğim için Mathf.RoundToInt kullandım. Input olarak sadece -1, 0 ve 1 istiyorum, hareket hızı sabit olmalı
+        // 0.2 -> 0'a yuvarlanacak
+        // 0.5 - 0.9 -> 1
+        valueX = Mathf.RoundToInt(ctx.ReadValue<float>());
     }
 
     private void StopMove(InputAction.CallbackContext ctx)
