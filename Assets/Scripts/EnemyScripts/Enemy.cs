@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float health;
+    // PatrollingEnemy.cs can use this variable, because it's child of Enemy.cs. I don't even need to connect them like "private Enemy enemy;" , "GetComponent<Enemy>();". I DONT need those codes!!!
+
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
