@@ -14,10 +14,11 @@ public class PlayerStats : MonoBehaviour
     private Animator anim;
     private PlayerMoveControls playerMove;
 
-    public Image healthUI;
+    private Image healthUI;
 
     void Start()
     {
+        healthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
         anim = GetComponentInParent<Animator>();
         health = maxHealth;
         playerMove = GetComponentInParent<PlayerMoveControls>();
