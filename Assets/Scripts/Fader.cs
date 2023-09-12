@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.SceneManagement;
+
 public class Fader : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Animator anim;
+    private int lvlToLoad;
+
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetLevel(int lvl)
     {
-        
+        lvlToLoad = lvl;
+        anim.SetTrigger("Fade");
+    }
+
+    public void LoadLevel()
+    {
+        SceneManager.LoadScene(lvlToLoad);
     }
 }
