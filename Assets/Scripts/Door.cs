@@ -17,6 +17,12 @@ public class Door : MonoBehaviour
         SceneManager.LoadScene(lvlToLoad);
     }
 
+    // I want feature that if player died, then active lvl will loaded again. So player could try again and again
+    private void RestartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
