@@ -11,9 +11,23 @@ public class Enemy : MonoBehaviour
     // 2) other classes (except child classes) neither cant see nor use protected variables
     // 3) visible just to parent and child classes
 
+    protected Rigidbody2D rb;
+    protected Animator anim;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
     void Start()
     {
 
+    }
+
+    void FixedUpdate()
+    {
+        rb.velocity = new(-1, rb.velocity.y);
     }
 
 }
