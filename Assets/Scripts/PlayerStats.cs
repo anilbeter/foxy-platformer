@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI;
+
 public class PlayerStats : MonoBehaviour
 {
     public float maxHealth;
@@ -12,11 +14,14 @@ public class PlayerStats : MonoBehaviour
     private Animator anim;
     private PlayerMoveControls playerMove;
 
+    public Image healthUI;
+
     void Start()
     {
         anim = GetComponentInParent<Animator>();
         health = maxHealth;
         playerMove = GetComponentInParent<PlayerMoveControls>();
+        UpdateHealthUI();
     }
 
     public void TakeDamage(float damage)
@@ -28,6 +33,7 @@ public class PlayerStats : MonoBehaviour
             anim.SetBool("Damage", true);
 
             playerMove.hasControl = false;
+            UpdateHealthUI();
             if (health <= 0)
             {
                 GetComponent<PolygonCollider2D>().enabled = false;
@@ -60,5 +66,11 @@ public class PlayerStats : MonoBehaviour
             // play death animation
             anim.SetBool("Death", true);
         }
+    }
+
+    public void UpdateHealthUI()
+    {
+        // fillAmount uses values between 0 and 1. So I need to divide to maxHealth. My values will be = 1, 0.8, 0.6, 0.4, 0.2, and 0
+        healthUI.fillAmount = health / maxHealth;
     }
 }
