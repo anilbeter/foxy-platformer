@@ -24,4 +24,15 @@ public class Fader : MonoBehaviour
     {
         SceneManager.LoadScene(lvlToLoad);
     }
+
+    private void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void RestartLevel()
+    {
+        Invoke(nameof(Restart), 1.5f);
+        // Invokes the method methodName in time seconds. So I write Restart() functions name inside of Invoke, same scene will loaded after 1.5 seconds later
+    }
 }
