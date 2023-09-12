@@ -25,9 +25,4 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void FixedUpdate()
-    {
-        rb.velocity = new(-1, rb.velocity.y);
-    }
-
 }
