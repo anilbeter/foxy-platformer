@@ -14,6 +14,16 @@ public class EnemyAttack : MonoBehaviour
         {
             playerStats = collision.GetComponent<PlayerStats>();
             playerStats.TakeDamage(damage);
+
+            SpecialAttack();
         }
+    }
+
+    // To implement different behaviours to child classes, we use VIRTUAL function
+    // virtual function should be in PARENT class
+    // [IMPORTANT] It's virtual because -> we can OVERWRITE on this function in child classes
+    public virtual void SpecialAttack()
+    {
+
     }
 }
