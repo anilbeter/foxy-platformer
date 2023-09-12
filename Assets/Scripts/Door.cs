@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
@@ -10,17 +9,6 @@ public class Door : MonoBehaviour
     void Start()
     {
 
-    }
-
-    private void LoadLevel()
-    {
-        SceneManager.LoadScene(lvlToLoad);
-    }
-
-    // I want feature that if player died, then active lvl will loaded again. So player could try again and again
-    private void RestartLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +20,6 @@ public class Door : MonoBehaviour
             // also I want to disable player controls
             collision.GetComponent<GatherInput>().DisableControls();
 
-            LoadLevel();
         }
     }
 }
