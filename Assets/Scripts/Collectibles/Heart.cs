@@ -19,6 +19,10 @@ public class Heart : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             PlayerStats playerStats = collision.GetComponentInChildren<PlayerStats>();
+
+            if (playerStats.health == playerStats.maxHealth)
+                return;
+
             playerStats.IncreaseHealth(recoveryHealth);
             heartCollider.enabled = false;
             heartSprite.enabled = false;
