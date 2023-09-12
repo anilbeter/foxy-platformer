@@ -74,4 +74,14 @@ public class PlayerStats : MonoBehaviour
         // fillAmount uses values between 0 and 1. So I need to divide to maxHealth. My values will be = 1, 0.8, 0.6, 0.4, 0.2, and 0
         healthUI.fillAmount = health / maxHealth;
     }
+
+    public void IncreaseHealth(float heal)
+    {
+        health += heal;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+        UpdateHealthUI();
+    }
 }
