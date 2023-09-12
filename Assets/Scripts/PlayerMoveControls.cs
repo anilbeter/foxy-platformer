@@ -22,6 +22,7 @@ public class PlayerMoveControls : MonoBehaviour
     public bool touchingGround = true;
 
     private bool knockBack = false;
+    public bool hasControl = true;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class PlayerMoveControls : MonoBehaviour
     private void FixedUpdate()
     {
         CheckStatus();
-        if (knockBack)
+        if (knockBack && !hasControl)
             return;
         // if knockBack true, then player won't able to move or jump
         Move();
