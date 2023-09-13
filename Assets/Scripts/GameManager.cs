@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     private Fader fader;
     private Door theDoor;
+    private List<Gem> gems;
 
     private void Awake()
     {
