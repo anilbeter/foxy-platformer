@@ -83,4 +83,15 @@ public class GameManager : MonoBehaviour
         if (!GM.gems.Contains(gem))
             GM.gems.Add(gem);
     }
+
+    public static void RemoveGemFromList(Gem gem)
+    {
+        if (GM == null)
+            return;
+
+        GM.gems.Remove(gem);
+        if (GM.gems.Count == 0)
+            // IDEA -> if player collect all gems on the scene, then unlock the door
+            GM.theDoor.UnlockDoor();
+    }
 }
