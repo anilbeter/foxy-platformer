@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     private Fader fader;
     private Door theDoor;
+
+    // [WHY list?] I could use array also for the gems, but total gems not the same for each level. I need to define array lenght, but as I say gems number not same, so list is more dynamic and useful in our case.
     private List<Gem> gems;
 
     private void Awake()
