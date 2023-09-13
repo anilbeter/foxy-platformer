@@ -7,11 +7,12 @@ public class Door : MonoBehaviour
     public int lvlToLoad;
 
     public Sprite unlockedSprite;
+    private BoxCollider2D boxCol;
 
 
     void Start()
     {
-
+        boxCol = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +20,7 @@ public class Door : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             // To ensure dont call load level function multiple times, I disable it
-            GetComponent<BoxCollider2D>().enabled = false;
+            boxCol.enabled = false;
             // also I want to disable player controls
             collision.GetComponent<GatherInput>().DisableControls();
 
@@ -30,6 +31,6 @@ public class Door : MonoBehaviour
     public void UnlockDoor()
     {
         GetComponent<SpriteRenderer>().sprite = unlockedSprite;
-        GetComponent<BoxCollider2D>().enabled = true;
+        boxCol.enabled = true;
     }
 }
