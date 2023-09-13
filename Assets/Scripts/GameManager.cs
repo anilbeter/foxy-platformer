@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
         }
         // Idea -> REMEMBER: there's must only one game manager on each level. Player just started the game and there's not GM atm, so if condition will work (line 20 and 21). Then player arrived to level 2, oh no, there's two game manager object one of them from level 1 (cuz' in the if statement we use DontDestroyOnLoad), so now we have 2 game manager object in level 2 / scene 2. Now else statement works and Destroy previous one, again we have just 1 game manager, as it should be
 
+        gems = new List<Gem>();
+
     }
 
     void Start()
