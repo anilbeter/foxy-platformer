@@ -11,9 +11,11 @@ public class PlayerCollectibles : MonoBehaviour
 
     void Start()
     {
+        gemNumber = PlayerPrefs.GetInt("GemNumber", 0);
         // With this approach, I don't have to set reference manually, its always find Text component that belongs GemUI
         textComponent = GameObject.FindGameObjectWithTag("GemUI").GetComponentInChildren<Text>();
         UpdateText();
+
     }
 
     private void UpdateText()
@@ -26,5 +28,10 @@ public class PlayerCollectibles : MonoBehaviour
     {
         gemNumber++;
         UpdateText();
+    }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("GemNumber");
     }
 }
