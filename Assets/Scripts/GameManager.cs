@@ -52,4 +52,11 @@ public class GameManager : MonoBehaviour
         GM.fader.SetLevel(index);
     }
 
+    public static void ManagerRestartLevel()
+    {
+        if (GM == null)
+            return;
+
+        GM.fader.RestartLevel();
+    }
 }
