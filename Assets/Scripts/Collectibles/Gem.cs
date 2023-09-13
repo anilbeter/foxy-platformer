@@ -23,6 +23,9 @@ public class Gem : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             // In real world project, you should assign GetComponent in Start or Awake functions. I just quickly get them without storing, this is more expansive PC performance but whatever its just 2d platformer and I won't publish it on steam, so anyway
 
+            // Now if player collect all gems in the scene, then door will unlocked
+            GameManager.RemoveGemFromList(this);
+
             GetComponent<AudioSource>().Play();
 
             collision.GetComponent<PlayerCollectibles>().GemCollected();
