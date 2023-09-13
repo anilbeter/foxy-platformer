@@ -26,8 +26,7 @@ public class Door : MonoBehaviour
             // also I want to disable player controls
             collision.GetComponent<GatherInput>().DisableControls();
 
-            PlayerStats playerStats = GetComponentInChildren<PlayerStats>();
-            // save current health
+            PlayerStats playerStats = collision.GetComponentInChildren<PlayerStats>();
             PlayerPrefs.SetFloat("HealthKey", playerStats.health);
 
             GameManager.ManagerLoadLevel(lvlToLoad);
