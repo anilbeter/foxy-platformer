@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     {
         if (GM == null)
         {
-            // this means -> this whole GameManager script
+            // this means -> this whole GameManager object
             GM = this;
             DontDestroyOnLoad(gameObject);
         }
