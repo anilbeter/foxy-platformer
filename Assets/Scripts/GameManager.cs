@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     private static GameManager GM;
 
     private Fader fader;
+    private Door theDoor;
 
     private void Awake()
     {
@@ -42,6 +43,14 @@ public class GameManager : MonoBehaviour
             return;
 
         GM.fader = fD;
+    }
+
+    public static void RegisterDoor(Door door)
+    {
+        if (GM == null)
+            return;
+
+        GM.theDoor = door;
     }
 
     public static void ManagerLoadLevel(int index)

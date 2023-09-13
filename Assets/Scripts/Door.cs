@@ -12,6 +12,8 @@ public class Door : MonoBehaviour
 
     void Start()
     {
+        GameManager.RegisterDoor(this);
+
         boxCol = GetComponent<BoxCollider2D>();
     }
 
