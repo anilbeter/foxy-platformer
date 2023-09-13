@@ -44,4 +44,9 @@ public class GameManager : MonoBehaviour
         GM.fader = fD;
     }
 
+    public static void ManagerLoadLevel(int index)
+    {
+        GM.fader.SetLevel(index);
+    }
+
 }
