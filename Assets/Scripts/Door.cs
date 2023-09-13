@@ -5,6 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public int lvlToLoad;
+    // Now I can delete Fader
     public Fader fader;
 
     void Start()
@@ -21,7 +22,8 @@ public class Door : MonoBehaviour
             // also I want to disable player controls
             collision.GetComponent<GatherInput>().DisableControls();
 
-            fader.SetLevel(lvlToLoad);
+            // fader.SetLevel(lvlToLoad);
+            GameManager.ManagerLoadLevel(lvlToLoad);
         }
     }
 }
