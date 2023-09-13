@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         if (GM == null)
             return;
 
+        // when we restart the game [which means player didn't collect all games -> then clear the gems list]
+        GM.gems.Clear();
         GM.fader.RestartLevel();
     }
 
