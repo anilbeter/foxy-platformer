@@ -7,7 +7,7 @@ public class Gem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GameManager.RegisterGem(this);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
