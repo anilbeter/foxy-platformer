@@ -20,7 +20,10 @@ public class PlayerStats : MonoBehaviour
     {
         healthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
         anim = GetComponentInParent<Animator>();
-        health = maxHealth;
+        // health = maxHealth;
+
+        // If we dont have that key (its mean we are just started to game, we're in level1). So health should be max health)
+        health = PlayerPrefs.GetFloat("HealthKey", maxHealth);
         playerMove = GetComponentInParent<PlayerMoveControls>();
         UpdateHealthUI();
     }
