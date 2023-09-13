@@ -12,6 +12,10 @@ public class Fader : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+
+        // we have static instance and functions from GameManager, we have easy access and we don't need to find GameManager object.
+        GameManager.RegisterFader(this);
+        // Fader is now registered and GameManager can use it
     }
 
     public void SetLevel(int lvl)
