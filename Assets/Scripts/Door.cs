@@ -6,6 +6,8 @@ public class Door : MonoBehaviour
 {
     public int lvlToLoad;
 
+    public Sprite unlockedSprite;
+
 
     void Start()
     {
@@ -23,5 +25,11 @@ public class Door : MonoBehaviour
 
             GameManager.ManagerLoadLevel(lvlToLoad);
         }
+    }
+
+    public void UnlockDoor()
+    {
+        GetComponent<SpriteRenderer>().sprite = unlockedSprite;
+        GetComponent<BoxCollider2D>().enabled = true;
     }
 }
