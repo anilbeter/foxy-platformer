@@ -88,4 +88,9 @@ public class PlayerStats : MonoBehaviour
         }
         UpdateHealthUI();
     }
+
+    private void OnApplicationQuit()
+    {
+        PlayerPrefs.DeleteKey("HealthKey");
+    }
 }
