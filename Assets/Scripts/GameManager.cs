@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     // also I can easily access to this class in other script, I don't need to find game manager object and getcomponent stuff. Because it's just have static keyword
     private static GameManager GM;
 
+    private Fader fader;
+
     private void Awake()
     {
         if (GM == null)
@@ -33,5 +35,13 @@ public class GameManager : MonoBehaviour
 
     }
 
+    // we can create static functions that will enable objects to register themselves to the GameManager
+    public static void RegisterFader(Fader fD)
+    {
+        if (GM == null)
+            return;
+
+        GM.fader = fD;
+    }
 
 }
