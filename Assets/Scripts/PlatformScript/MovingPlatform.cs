@@ -35,7 +35,8 @@ public class MovingPlatform : MonoBehaviour
   {
     if (collision.collider.CompareTag("Player"))
     {
-      collision.transform.SetParent(transform);
+      if (transform.position.y < collision.transform.position.y - 0.8f)
+        collision.transform.SetParent(transform);
       // When player and platorm collides, platform object will be parent of the Player 
     }
   }
