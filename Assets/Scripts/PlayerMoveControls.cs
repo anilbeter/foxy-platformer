@@ -21,7 +21,7 @@ public class PlayerMoveControls : MonoBehaviour
     public Transform rightPoint;
     public bool touchingGround = true;
 
-    private bool knockBack = false;
+    public bool knockBack = false;
     public bool hasControl = true;
 
     void Start()

@@ -29,11 +29,13 @@ public class PlayerAttackControls : MonoBehaviour
         {
             // check conditions
             // (if we already attacking or we don't have control or knocback is true: then return and don't attack)
-            //
+            if (attackStarted || !pMC.hasControl || pMC.knockBack)
+                return;
 
             // conditions are met: start attack
             // start animation, set "attackStarted" to true
             anim.SetBool("Attack", true);
+            attackStarted = true;
         }
     }
 
@@ -43,5 +45,7 @@ public class PlayerAttackControls : MonoBehaviour
         anim.SetBool("Attack", false);
         gI.tryAttack = false;
         // FIX only one attack even player holds attack key
+
+        attackStarted = false;
     }
 }
