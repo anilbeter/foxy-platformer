@@ -7,12 +7,13 @@ public class MovingPlatform : MonoBehaviour
 {
   public float speed;
   public Transform[] points;
+  public int startingPoint;
 
   private int i;
 
   void Start()
   {
-
+    transform.position = points[startingPoint].position;
   }
 
 
