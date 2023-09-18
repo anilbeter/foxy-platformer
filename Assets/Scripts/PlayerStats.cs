@@ -13,11 +13,13 @@ public class PlayerStats : MonoBehaviour
 
     private Animator anim;
     private PlayerMoveControls playerMove;
+    private PlayerAttackControls pAC;
 
     private Image healthUI;
 
     void Start()
     {
+        pAC = GetComponentInParent<PlayerAttackControls>();
         healthUI = GameObject.FindGameObjectWithTag("HealthUI").GetComponent<Image>();
         anim = GetComponentInParent<Animator>();
         // health = maxHealth;
@@ -38,6 +40,8 @@ public class PlayerStats : MonoBehaviour
 
             playerMove.hasControl = false;
             UpdateHealthUI();
+
+            pAC.ResetAttack();
             if (health <= 0)
             {
                 GetComponent<PolygonCollider2D>().enabled = false;
