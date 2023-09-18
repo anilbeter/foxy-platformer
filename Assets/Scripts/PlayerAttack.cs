@@ -16,7 +16,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (collision.gameObject.layer == enemyLayer)
         {
-            Debug.Log("Hit enemy!");
+            collision.GetComponent<Enemy>().TakeDamage(attackDamage);
         }
     }
 }

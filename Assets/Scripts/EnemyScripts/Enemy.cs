@@ -20,9 +20,14 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    void Start()
+    public void TakeDamage(float damage)
     {
-
+        health -= damage;
+        if (health <= 0)
+        {
+            // enemy death animation
+            Destroy(gameObject);
+        }
     }
 
 }
