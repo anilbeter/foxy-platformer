@@ -30,4 +30,22 @@ public class MovingPlatform : MonoBehaviour
 
     transform.position = UnityEngine.Vector2.MoveTowards(transform.position, points[i].position, speed * Time.deltaTime);
   }
+
+  private void OnCollisionEnter2D(Collision2D collision)
+  {
+    if (collision.collider.CompareTag("Player"))
+    {
+      collision.transform.SetParent(transform);
+      // When player and platorm collides, platform object will be parent of the Player 
+    }
+  }
+
+  private void OnCollisionExit2D(Collision2D collision)
+  {
+    if (collision.collider.CompareTag("Player"))
+    {
+      collision.transform.SetParent(null);
+      // When player leaves platform, platform object will no longer be parent
+    }
+  }
 }
