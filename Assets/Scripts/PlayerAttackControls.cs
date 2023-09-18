@@ -8,6 +8,8 @@ public class PlayerAttackControls : MonoBehaviour
     private GatherInput gI;
     private Animator anim;
 
+    public PolygonCollider2D polyCol;
+
     public bool attackStarted = false;
 
     void Start()
@@ -39,6 +41,11 @@ public class PlayerAttackControls : MonoBehaviour
         }
     }
 
+    public void ActivateAttack()
+    {
+        polyCol.enabled = true;
+    }
+
     public void ResetAttack()
     {
         // reset the animation and bool variables
@@ -47,5 +54,6 @@ public class PlayerAttackControls : MonoBehaviour
         // FIX only one attack even player holds attack key
 
         attackStarted = false;
+        polyCol.enabled = false;
     }
 }
