@@ -40,5 +40,8 @@ public class PlayerAttackControls : MonoBehaviour
     public void ResetAttack()
     {
         // reset the animation and bool variables
+        anim.SetBool("Attack", false);
+        gI.tryAttack = false;
+        // FIX only one attack even player holds attack key
     }
 }
