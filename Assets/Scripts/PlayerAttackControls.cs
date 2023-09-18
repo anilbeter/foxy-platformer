@@ -33,6 +33,12 @@ public class PlayerAttackControls : MonoBehaviour
 
             // conditions are met: start attack
             // start animation, set "attackStarted" to true
+            anim.SetBool("Attack", true);
         }
+    }
+
+    public void ResetAttack()
+    {
+        // reset the animation and bool variables
     }
 }
